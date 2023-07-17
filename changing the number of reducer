@@ -1,0 +1,47 @@
+
+
+BY default  we have a 1 reducer but we can change it to 0 or make it more than 1.
+
+QUESTION -1 WHEN SHOULD WE CONSIDER TO INCREASE THE NUMBER OF REDUCERS.
+
+CONSIDER A SCENERIO REDUCER HAS TO DO A LOT OF WORK THAN THE MAPPER AND YOU TRY YOUR BEST  THAT MAPPER DO MORE STILL A SINGLE REDUCER OVER BURDEN INTO DOING A LOT OF WORK.
+You should increase the size of a reducer in distributed processing when the amount of data being processed by the reducer exceeds its capacity, causing performance degradation or resource bottlenecks.
+
+QUESTION -2 WHEN WE SHOULD MAKE THE NU,BER OF REDUCERS TO 0?
+when the reducer is 0 then the mapper output is the final output . In shuffling ans sorting only happens when we have 1 or more than 1 reducer.
+
+
+
+Concept of partitionm comes when  we have more than  one reducer.
+This is to tell which key value pair  goes to which reducer.
+
+BY DEFAULT THERE IS A HASH FUNCTION.
+
+CONSIDER YOU HAVE 3 REDUCER SO WHICH PARTITION WILL GO WHERE
+
+3 REDUCERS -0,1,2
+
+1%3 = 1
+2%3 = 2
+3%3 = 0
+4%3 = 1
+5%3 = 2
+6%3 = 0
+
+
+hash function is consistent
+
+(HELLO ,1) REDUCER -1
+(HI ,1) REDUCER -2
+(HELLO ,1) REDUCER -1
+
+same key should always go to same reducer .
+
+IF your hash function is not consitent then  you will get the final answer.
+
+question -3 What is shuffle ?
+
+Sending the data from  mapper machine to reduce machine
+
+question -4 what is sort?
+operation done on reducer machine to get all the same keys together in a group.
